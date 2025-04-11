@@ -7,8 +7,6 @@ const prisma = new PrismaClient();
 router.get("/find", isAuthenticated, async (req, res) => {
   try {
     const user = await prisma.user.findUnique({ where: { id: req.userId } });
-    console.log(req);
-    console.log(user);
 
     if (!user) {
       res.status(404).json({ message: "ユーザーが見つかりませんでした" });
@@ -23,9 +21,7 @@ router.get("/find", isAuthenticated, async (req, res) => {
 });
 
 router.get("/profile/:userId", isAuthenticated, async (req, res) => {
-  console.log(req);
   const { userId } = req.params;
-  console.log(userId);
 
   try {
     const profile = await prisma.profile.findUnique({

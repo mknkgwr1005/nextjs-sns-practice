@@ -1,8 +1,7 @@
 const jwt = require("jsonwebtoken");
 
 function isAuthenticated(req, res, next) {
-  console.log(req);
-  console.log("request header is", req.headers.authorization);
+  console.log("request header is", req.headers.authorization); //users/find だと取得できるが、 /users/profile/:userIdだとundefined
   const token = req.headers.authorization.split(" ")[1];
   console.log("token is ", token);
 
